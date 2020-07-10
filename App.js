@@ -24,10 +24,17 @@ const App = () => {
       return prevState.filter((goal) => goal.id !== id);
     });
   };
+  const onCancelHandler = () => {
+    setIsAddMode(false);
+  };
   return (
     <View style={styles.screen}>
       <Button title='Add New Goal' onPress={() => setIsAddMode(true)} />
-      <GoalInput addGoal={addGoalHandler} addMode={isAddMode} />
+      <GoalInput
+        addGoal={addGoalHandler}
+        addMode={isAddMode}
+        onCancel={onCancelHandler}
+      />
       <FlatList
         data={goalsList}
         renderItem={(itemdata) => (
